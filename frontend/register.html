@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register | FinanceHub</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="register">
+  <main class="auth-page">
+    <section class="auth-card register-card">
+      <div class="brand-mark">FH</div>
+      <p class="eyebrow">Start smart</p>
+      <h1>Create your account</h1>
+      <p class="auth-subtitle">Build a clear record of daily spending with a simple and classic interface.</p>
+
+      <div id="reg-alert" class="alert" hidden></div>
+
+      <form id="register-form" class="form-stack">
+        <label>
+          Full name
+          <input type="text" id="reg-name" placeholder="Ravi Kumar" autocomplete="name" required />
+        </label>
+        <label>
+          Email
+          <input type="email" id="reg-email" placeholder="you@example.com" autocomplete="email" required />
+        </label>
+        <label>
+          Password
+          <input type="password" id="reg-pass" placeholder="At least 6 characters" autocomplete="new-password" required />
+        </label>
+        <label>
+          Phone
+          <input type="tel" id="reg-phone" placeholder="+91 98765 43210" autocomplete="tel" />
+        </label>
+        <label>
+          Currency
+          <select id="reg-currency">
+            <option value="INR">INR - Indian Rupee</option>
+            <option value="USD">USD - US Dollar</option>
+            <option value="EUR">EUR - Euro</option>
+            <option value="GBP">GBP - British Pound</option>
+          </select>
+        </label>
+        <button class="btn btn-primary" id="reg-btn" type="submit">Create account</button>
+      </form>
+
+      <p class="switch-link">Already registered? <a href="login.html">Sign in</a></p>
+    </section>
+  </main>
+  <div id="toast" class="toast" hidden></div>
+  <script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile | FinanceHub</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="profile">
+  <header class="topbar">
+    <a class="brand" href="dashboard.html">
+      <span class="brand-mark small">FH</span>
+      <span>FinanceHub</span>
+    </a>
+    <nav class="nav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="features.html">Features</a>
+      <a href="subscription.html">Subscription</a>
+      <a class="admin-link" href="admin.html" hidden>Admin</a>
+      <a class="active" href="profile.html">Profile</a>
+    </nav>
+    <div class="topbar-actions">
+      <button class="avatar-btn" id="avatar-btn" type="button">?</button>
+      <button class="btn btn-soft" id="signout-btn" type="button">Sign out</button>
+    </div>
+  </header>
+
+  <main class="app-shell narrow">
+    <section class="page-heading">
+      <div>
+        <p class="eyebrow">Account settings</p>
+        <h1>Profile and preferences</h1>
+      </div>
+    </section>
+
+    <section class="panel profile-panel">
+      <div class="profile-summary">
+        <div class="profile-avatar" id="profile-avatar">?</div>
+        <div>
+          <h2 id="profile-name-display">-</h2>
+          <p id="profile-email-display">-</p>
+          <p id="profile-joined">Member since -</p>
+        </div>
+      </div>
+
+      <label class="avatar-upload">
+        Profile photo
+        <input type="file" id="profile-photo" accept="image/*" />
+      </label>
+
+      <div id="profile-alert" class="alert" hidden></div>
+
+      <form id="profile-form" class="form-stack">
+        <div class="form-grid">
+          <label>
+            Full name
+            <input type="text" id="p-name" required />
+          </label>
+          <label>
+            Email
+            <input type="email" id="p-email" disabled />
+          </label>
+          <label>
+            Phone
+            <input type="tel" id="p-phone" />
+          </label>
+          <label>
+            Currency
+            <select id="p-currency">
+              <option value="INR">INR - Indian Rupee</option>
+              <option value="USD">USD - US Dollar</option>
+              <option value="EUR">EUR - Euro</option>
+              <option value="GBP">GBP - British Pound</option>
+            </select>
+          </label>
+        </div>
+
+        <hr />
+
+        <div class="form-grid">
+          <label>
+            Current password
+            <input type="password" id="p-cur-pass" autocomplete="current-password" />
+          </label>
+          <label>
+            New password
+            <input type="password" id="p-new-pass" autocomplete="new-password" />
+          </label>
+        </div>
+
+        <button class="btn btn-primary compact" type="submit">Save profile</button>
+      </form>
+    </section>
+  </main>
+  <div id="toast" class="toast" hidden></div>
+  <script src="assets/app.js"></script>
+</body>
+</html>

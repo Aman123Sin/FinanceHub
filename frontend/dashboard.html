@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | FinanceHub</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="dashboard">
+  <header class="topbar">
+    <a class="brand" href="dashboard.html">
+      <span class="brand-mark small">FH</span>
+      <span>FinanceHub</span>
+    </a>
+    <nav class="nav">
+      <a class="active" href="dashboard.html">Dashboard</a>
+      <a href="features.html">Features</a>
+      <a href="subscription.html">Subscription</a>
+      <a class="admin-link" href="admin.html" hidden>Admin</a>
+      <a href="profile.html">Profile</a>
+    </nav>
+    <div class="topbar-actions">
+      <button class="avatar-btn" id="avatar-btn" type="button">?</button>
+      <button class="btn btn-soft" id="signout-btn" type="button">Sign out</button>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section class="page-heading">
+      <div>
+        <p class="eyebrow">Expense dashboard</p>
+        <h1>Clear view of your spending</h1>
+        <p id="mode-summary" class="mode-summary"></p>
+      </div>
+      <p class="muted">Built for daily tracking, budget control, and clean financial review.</p>
+    </section>
+
+    <section class="stats-grid">
+      <article class="stat-card">
+        <span>Total spent</span>
+        <strong id="stat-total">INR 0.00</strong>
+      </article>
+      <article class="stat-card">
+        <span>This month</span>
+        <strong id="stat-month">INR 0.00</strong>
+      </article>
+      <article class="stat-card">
+        <span>Transactions</span>
+        <strong id="stat-count">0</strong>
+      </article>
+    </section>
+
+    <section class="dashboard-grid">
+      <article class="panel">
+        <div class="panel-title">
+          <h2>Add expense</h2>
+          <p>Record a transaction in a few fields.</p>
+        </div>
+        <form id="expense-form" class="form-stack">
+          <input type="hidden" id="editing-id" />
+          <label>
+            Title
+            <input type="text" id="title" placeholder="Grocery run" required />
+          </label>
+          <label>
+            Amount
+            <input type="number" id="amount" placeholder="0.00" step="0.01" min="0.01" required />
+          </label>
+          <label>
+            Category
+            <select id="category"></select>
+          </label>
+          <div id="student-quick-cats" class="quick-cats" hidden></div>
+          <label>
+            Payment method
+            <select id="payment-method">
+              <option value="UPI">UPI</option>
+              <option value="Cash">Cash</option>
+              <option value="Card">Card</option>
+            </select>
+          </label>
+          <label>
+            Description
+            <input type="text" id="description" placeholder="Optional note" />
+          </label>
+          <label>
+            Date
+            <input type="date" id="date" />
+          </label>
+          <button class="btn btn-primary" id="expense-submit" type="submit">Add expense</button>
+          <button class="btn btn-outline" id="cancel-edit" type="button" hidden>Cancel edit</button>
+        </form>
+      </article>
+
+      <article class="panel">
+        <div class="panel-title">
+          <h2>Recent expenses</h2>
+          <p>Your latest records appear here.</p>
+        </div>
+        <div class="filter-row">
+          <input type="search" id="expense-search" placeholder="Search expenses" />
+          <select id="filter-category"></select>
+          <input type="date" id="filter-start" />
+          <input type="date" id="filter-end" />
+          <button class="btn btn-outline btn-mini" id="clear-filters" type="button">Clear</button>
+        </div>
+        <div id="expense-list" class="expense-list">
+          <p class="empty">Loading expenses...</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="dashboard-grid insight-grid">
+      <article class="panel">
+        <div class="panel-title">
+          <h2>Category analysis</h2>
+          <p>Compare spending by category for the current month.</p>
+        </div>
+        <canvas id="category-canvas" class="chart-canvas" width="520" height="260"></canvas>
+        <div id="category-chart" class="chart-list"></div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-title">
+          <h2>Payment analysis</h2>
+          <p>See how spending is distributed across UPI, cash, and card.</p>
+        </div>
+        <canvas id="payment-canvas" class="chart-canvas" width="520" height="220"></canvas>
+        <div id="payment-chart" class="chart-list"></div>
+      </article>
+    </section>
+
+    <section class="dashboard-grid insight-grid">
+      <article class="panel">
+        <div class="panel-title">
+          <h2>Budget alerts</h2>
+          <p>Warnings appear when saved category budgets reach 80% or 100%.</p>
+        </div>
+        <div id="budget-alerts" class="mini-list"></div>
+      </article>
+      <article class="panel">
+        <div class="panel-title">
+          <h2>Recurring expenses</h2>
+          <p>Saved repeat payments from the Features page.</p>
+        </div>
+        <div id="dashboard-recurring" class="mini-list"></div>
+      </article>
+    </section>
+  </main>
+  <div id="toast" class="toast" hidden></div>
+  <script src="assets/app.js"></script>
+</body>
+</html>

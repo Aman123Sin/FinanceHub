@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Features | FinanceHub</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="features">
+  <header class="topbar">
+    <a class="brand" href="dashboard.html">
+      <span class="brand-mark small">FH</span>
+      <span>FinanceHub</span>
+    </a>
+    <nav class="nav">
+      <a href="dashboard.html">Dashboard</a>
+      <a class="active" href="features.html">Features</a>
+      <a href="subscription.html">Subscription</a>
+      <a class="admin-link" href="admin.html" hidden>Admin</a>
+      <a href="profile.html">Profile</a>
+    </nav>
+    <div class="topbar-actions">
+      <button class="avatar-btn" id="avatar-btn" type="button">?</button>
+      <button class="btn btn-soft" id="signout-btn" type="button">Sign out</button>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section class="page-heading">
+      <div>
+        <p class="eyebrow">Premium feature set</p>
+        <h1>Advanced finance tools</h1>
+      </div>
+      <p class="muted">Advanced tools that make FinanceHub stronger than a basic expense tracker.</p>
+    </section>
+
+    <section id="premium-lock" class="premium-lock" hidden>
+      <div>
+        <p class="eyebrow">Sign in required</p>
+        <h2>Premium feature set is available</h2>
+        <p>Premium tools are active for logged-in users.</p>
+      </div>
+      <a class="btn btn-primary" href="subscription.html">View subscription</a>
+    </section>
+
+    <section class="features-grid premium-content">
+      <article class="panel">
+        <div class="panel-title">
+          <h2>Smart monthly budget limits</h2>
+          <p>Warn users at 80% and 100% of category budget.</p>
+        </div>
+        <form id="budget-form" class="form-stack">
+          <div class="form-grid">
+            <label>
+              Category
+              <select id="budget-category"></select>
+            </label>
+            <label>
+              Monthly limit
+              <input type="number" id="budget-limit" min="1" step="1" placeholder="5000" />
+            </label>
+          </div>
+          <button class="btn btn-primary compact" type="submit">Save budget</button>
+        </form>
+        <div id="budget-list" class="mini-list"></div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-title">
+          <h2>Spending prediction</h2>
+          <p>Estimate month-end spending using past records.</p>
+        </div>
+        <div class="feature-result">
+          <span>Predicted month-end spend</span>
+          <strong id="prediction-total">Loading...</strong>
+          <small id="prediction-note">Based on current month daily average.</small>
+        </div>
+      </article>
+
+      <article class="panel mode-panel">
+        <div class="panel-title">
+          <h2>Student spending mode</h2>
+          <p>When active, the dashboard adds focused categories, quick category chips, student-mode analysis, and budget alerts for those categories.</p>
+        </div>
+        <div class="mode-status" id="student-mode-status">Standard categories active</div>
+        <div id="student-categories" class="tag-cloud"></div>
+        <button class="btn btn-primary compact" id="student-mode-toggle" type="button">Activate student mode</button>
+      </article>
+
+      <article class="panel">
+        <div class="panel-title">
+          <h2>Savings goals</h2>
+          <p>Plan money for laptop, course, trip, or emergency fund.</p>
+        </div>
+        <form id="goal-form" class="form-stack">
+          <div class="form-grid">
+            <label>
+              Goal
+              <input type="text" id="goal-name" placeholder="Laptop" />
+            </label>
+            <label>
+              Target amount
+              <input type="number" id="goal-target" min="1" step="1" placeholder="45000" />
+            </label>
+            <label>
+              Saved amount
+              <input type="number" id="goal-saved" min="0" step="1" placeholder="5000" />
+            </label>
+            <label>
+              Target date
+              <input type="date" id="goal-date" />
+            </label>
+          </div>
+          <button class="btn btn-primary compact" type="submit">Add goal</button>
+        </form>
+        <div id="goal-list" class="mini-list"></div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-title">
+          <h2>Group expense split</h2>
+          <p>Track shared spending with roommates or project team members.</p>
+        </div>
+        <form id="split-form" class="form-stack">
+          <div class="form-grid">
+            <label>
+              Total amount
+              <input type="number" id="split-amount" min="1" step="0.01" placeholder="1200" />
+            </label>
+            <label>
+              People
+              <input type="number" id="split-people" min="2" step="1" placeholder="3" />
+            </label>
+          </div>
+          <button class="btn btn-primary compact" type="submit">Calculate split</button>
+        </form>
+        <div class="feature-result">
+          <span>Each person pays</span>
+          <strong id="split-result">-</strong>
+        </div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-title">
+          <h2>Monthly report export</h2>
+          <p>Download spending reports as CSV or create a printable PDF.</p>
+        </div>
+        <div class="button-row">
+          <button class="btn btn-primary" id="export-csv" type="button">Download CSV</button>
+          <button class="btn btn-outline" id="print-report" type="button">Print PDF</button>
+        </div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-title">
+          <h2>Recurring expenses</h2>
+          <p>Save repeated payments like rent, subscriptions, transport passes, or monthly services.</p>
+        </div>
+        <form id="recurring-form" class="form-stack">
+          <div class="form-grid">
+            <label>
+              Expense name
+              <input type="text" id="recurring-title" placeholder="Monthly rent" />
+            </label>
+            <label>
+              Amount
+              <input type="number" id="recurring-amount" min="1" step="0.01" placeholder="8000" />
+            </label>
+            <label>
+              Category
+              <select id="recurring-category"></select>
+            </label>
+            <label>
+              Payment method
+              <select id="recurring-payment">
+                <option value="UPI">UPI</option>
+                <option value="Cash">Cash</option>
+                <option value="Card">Card</option>
+              </select>
+            </label>
+          </div>
+          <button class="btn btn-primary compact" type="submit">Save recurring expense</button>
+        </form>
+        <div id="recurring-list" class="mini-list"></div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-title">
+          <h2>Unusual spending alert</h2>
+          <p>Detect sudden extra spending in one category.</p>
+        </div>
+        <div id="unusual-alert" class="feature-result">
+          <span>Alert status</span>
+          <strong>Loading...</strong>
+        </div>
+      </article>
+
+      <article class="panel receipt-panel">
+        <div class="panel-title">
+          <h2>Receipt photo upload</h2>
+          <p>Save the bill image, enter the amount, and add it to your dashboard.</p>
+        </div>
+        <div class="receipt-layout">
+          <label>
+            Upload receipt
+            <input type="file" id="receipt-file" accept="image/*,.pdf" multiple />
+          </label>
+          <div id="receipt-preview" class="receipt-gallery">No receipts selected.</div>
+        </div>
+        <div class="mode-status" id="receipt-auto-status">Upload a receipt, then confirm the amount below to add it to Dashboard totals.</div>
+        <div class="scanner-box">
+          <div class="panel-title">
+            <h3>Receipt expense entry</h3>
+            <p>Enter the bill values and add them as an expense.</p>
+          </div>
+          <div class="form-grid">
+            <label>
+              Merchant / title
+              <input type="text" id="scan-title" placeholder="Book store" />
+            </label>
+            <label>
+              Amount
+              <input type="number" id="scan-amount" min="1" step="0.01" placeholder="850" />
+            </label>
+            <label>
+              Category
+              <select id="scan-category"></select>
+            </label>
+            <label>
+              Date
+              <input type="date" id="scan-date" />
+            </label>
+          </div>
+          <button class="btn btn-primary compact" id="save-scan-draft" type="button">Add receipt amount to dashboard</button>
+        </div>
+        <button class="btn btn-outline compact" id="clear-receipt" type="button">Remove receipt</button>
+      </article>
+    </section>
+  </main>
+  <div id="toast" class="toast" hidden></div>
+  <script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin | FinanceHub</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="admin">
+  <header class="topbar">
+    <a class="brand" href="admin.html">
+      <span class="brand-mark small">FH</span>
+      <span>FinanceHub</span>
+    </a>
+    <nav class="nav">
+      <a class="admin-link active" href="admin.html">Admin</a>
+    </nav>
+    <div class="topbar-actions">
+      <button class="btn btn-soft admin-logout-btn" id="signout-btn" type="button">Logout</button>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section class="page-heading">
+      <div>
+        <p class="eyebrow">Admin</p>
+        <h1>Admin console</h1>
+      </div>
+      <p class="muted">Manage users, payment records, and account access.</p>
+    </section>
+    <section class="stats-grid">
+      <article class="stat-card">
+        <span>Total users</span>
+        <strong id="admin-total-users">0</strong>
+      </article>
+      <article class="stat-card">
+        <span>Premium users</span>
+        <strong id="admin-premium-users">0</strong>
+      </article>
+      <article class="stat-card">
+        <span>Standard users</span>
+        <strong id="admin-standard-users">0</strong>
+      </article>
+    </section>
+    <section class="panel admin-requests-panel">
+      <div class="panel-title">
+        <h2>Payment approval requests</h2>
+        <p>Review uploaded payment screenshots, update request status, and clean records.</p>
+      </div>
+      <div class="admin-toolbar">
+        <div class="admin-summary">
+          <span>All <strong id="admin-request-total">0</strong></span>
+          <span>Approved <strong id="admin-request-approved">0</strong></span>
+          <span>Rejected <strong id="admin-request-rejected">0</strong></span>
+        </div>
+        <div class="filter-row compact-filters">
+          <select id="admin-request-filter">
+            <option value="All">All requests</option>
+            <option value="APPROVED">Approved</option>
+            <option value="REJECTED">Rejected</option>
+            <option value="PENDING">Pending</option>
+          </select>
+          <input type="search" id="admin-request-search" placeholder="Search requests" />
+          <button class="btn btn-outline btn-mini" id="export-requests" type="button">Export requests</button>
+          <button class="btn btn-outline btn-mini" id="admin-refresh" type="button">Refresh</button>
+        </div>
+      </div>
+      <div id="premium-requests" class="request-list"></div>
+    </section>
+    <section class="panel">
+      <div class="panel-title">
+        <h2>User subscription management</h2>
+        <p>Review users, activate premium, or delete accounts.</p>
+      </div>
+      <div class="filter-row">
+        <input type="search" id="admin-user-search" placeholder="Search users by name or email" />
+        <select id="admin-plan-filter">
+          <option value="All">All plans</option>
+          <option value="Premium">Premium</option>
+          <option value="Standard">Standard</option>
+          <option value="Blocked">Blocked</option>
+        </select>
+        <button class="btn btn-outline btn-mini" id="export-users" type="button">Export users</button>
+      </div>
+      <p class="mode-status">Deleting a user also removes that user's expenses and payment requests.</p>
+      <div id="admin-users" class="mini-list"></div>
+    </section>
+    <section class="panel" id="admin-user-detail-panel" hidden>
+      <div class="panel-title">
+        <h2 id="admin-detail-title">User details</h2>
+        <p id="admin-detail-subtitle">Select a user to manage profile, access, and expenses.</p>
+      </div>
+      <div class="admin-detail-grid">
+        <form id="admin-edit-user-form" class="form-stack">
+          <input type="hidden" id="admin-edit-user-id" />
+          <div class="form-grid">
+            <label>
+              Full name
+              <input type="text" id="admin-edit-name" />
+            </label>
+            <label>
+              Phone
+              <input type="text" id="admin-edit-phone" />
+            </label>
+            <label>
+              Currency
+              <select id="admin-edit-currency">
+                <option value="INR">INR - Indian Rupee</option>
+                <option value="USD">USD - US Dollar</option>
+                <option value="EUR">EUR - Euro</option>
+              </select>
+            </label>
+          </div>
+          <div class="button-row">
+            <button class="btn btn-primary compact" type="submit">Save user</button>
+            <button class="btn btn-outline compact" id="admin-toggle-active" type="button">Block user</button>
+          </div>
+        </form>
+        <form id="admin-reset-password-form" class="form-stack">
+          <label>
+            New password
+            <input type="password" id="admin-reset-password" placeholder="Minimum 6 characters" />
+          </label>
+          <button class="btn btn-outline compact" type="submit">Reset password</button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <div id="toast" class="toast" hidden></div>
+  <script src="assets/app.js"></script>
+</body>
+</html>

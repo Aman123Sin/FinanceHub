@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | FinanceHub</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="login">
+  <main class="auth-page">
+    <section class="auth-card">
+      <div class="brand-mark">FH</div>
+      <p class="eyebrow">Welcome back</p>
+      <h1>Sign in to FinanceHub</h1>
+      <p class="auth-subtitle">Track expenses, review totals, and keep your personal budget organized.</p>
+
+      <div id="login-alert" class="alert" hidden></div>
+
+      <form id="login-form" class="form-stack">
+        <label>
+          Email
+          <input type="email" id="login-email" placeholder="you@example.com" autocomplete="email" required />
+        </label>
+        <label>
+          Password
+          <input type="password" id="login-pass" placeholder="Enter password" autocomplete="current-password" required />
+        </label>
+        <button class="btn btn-primary" id="login-btn" type="submit">Sign in</button>
+      </form>
+
+      <p class="switch-link">New here? <a href="register.html">Create your account</a></p>
+    </section>
+  </main>
+  <div id="toast" class="toast" hidden></div>
+  <script src="assets/app.js"></script>
+</body>
+</html>

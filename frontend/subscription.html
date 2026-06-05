@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Subscription | FinanceHub</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="subscription">
+  <header class="topbar">
+    <a class="brand" href="dashboard.html">
+      <span class="brand-mark small">FH</span>
+      <span>FinanceHub</span>
+    </a>
+    <nav class="nav">
+      <a href="dashboard.html">Dashboard</a>
+      <a href="features.html">Features</a>
+      <a class="active" href="subscription.html">Subscription</a>
+      <a class="admin-link" href="admin.html" hidden>Admin</a>
+      <a href="profile.html">Profile</a>
+    </nav>
+    <div class="topbar-actions">
+      <button class="avatar-btn" id="avatar-btn" type="button">?</button>
+      <button class="btn btn-soft" id="signout-btn" type="button">Sign out</button>
+    </div>
+  </header>
+
+  <main class="app-shell narrow">
+    <section class="page-heading">
+      <div>
+        <p class="eyebrow">Subscription</p>
+        <h1>Premium access</h1>
+      </div>
+    </section>
+    <section class="panel subscription-panel">
+      <div class="feature-result">
+        <span>Current plan</span>
+        <strong id="subscription-status">Checking...</strong>
+        <small id="subscription-note">Premium tools are active without admin approval.</small>
+      </div>
+      <div class="alert subscription-warning">
+        Payment proof is optional now. Premium access is already active for logged-in users.
+      </div>
+      <div class="plan-grid">
+        <article>
+          <h2>Standard</h2>
+          <p>Expense tracking, profile, dashboard totals, and basic records.</p>
+        </article>
+        <article>
+          <h2>Premium - INR 49</h2>
+          <p>AI assistant, receipt auto-add, budgets, goals, recurring expenses, reports, charts, and advanced alerts.</p>
+        </article>
+      </div>
+      <div class="payment-grid">
+        <div class="qr-card">
+          <div class="qr-code" aria-label="Premium payment QR">
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <strong>Scan to pay INR 49</strong>
+          <p>UPI ID: financehub@upi</p>
+        </div>
+        <form id="premium-proof-form" class="form-stack">
+          <label>
+            Upload payment screenshot
+            <input type="file" id="premium-proof" accept="image/*" required />
+          </label>
+          <div id="premium-proof-preview" class="receipt-gallery">No payment proof selected.</div>
+          <button class="btn btn-primary compact" type="submit">Send payment proof</button>
+          <p id="premium-request-status" class="mode-status">Premium access is already active. You can still send payment proof for records.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <div id="toast" class="toast" hidden></div>
+  <script src="assets/app.js"></script>
+</body>
+</html>
