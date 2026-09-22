@@ -1,4 +1,4 @@
-const API = "http://localhost:8080";
+const API = "https://financehub-production.up.railway.app";
 const CORE_CATEGORIES = ["Food", "Transport", "Shopping", "Bills", "Health", "Entertainment", "Education", "Other"];
 const STUDENT_CATEGORIES = ["Canteen", "Books", "Hostel", "Stationery", "Transport Pass", "Exam Fees"];
 const ALL_CATEGORIES = [
